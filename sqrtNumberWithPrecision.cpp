@@ -49,7 +49,6 @@ int main()
     cin >> n;
     int intergerPart = sqrtNum(n);
     cout << "Square root of " << n << " is : " << intergerPart << endl;
-    ;
     double ans = precision(n, 5, intergerPart);
     cout << "Actual square root is : " << ans;
 
