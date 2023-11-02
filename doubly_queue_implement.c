@@ -44,7 +44,7 @@ void insertFront()
         int item;
         printf("\nenter data:");
         scanf("%d",&item);
-        if(front==-1)
+        if(front==-1 && rear==-1)
         {
             front=0;
             rear=0;
