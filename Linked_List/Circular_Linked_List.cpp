@@ -59,6 +59,20 @@ void print(Node *tail) {
     }while(temp!=tail);
     cout<<endl;
 }
+//to check linked list is either circular or not
+bool isCircular(Node *head) {
+    if(head == NULL) {
+        return true;
+    }
+    Node *temp = head->next;
+    while(temp!=NULL && temp!=head) {
+        temp = temp->next;
+    }
+    if(temp == NULL) {
+        return false;
+    }
+    return true;
+}
 int main() {
     Node *tail = NULL;
     insertNode(tail, 2, 17);
@@ -72,6 +86,14 @@ int main() {
     //print(tail);
     deleteNode(tail, 17);
     print(tail);
-    deleteNode(tail, 19);
-    print(tail);
+    //deleteNode(tail, 19);
+    //print(tail);
+    //Node *temp = tail;
+    //tail = tail->next;
+    //temp->next = NULL;
+    if(isCircular(tail)) {
+        cout<<"Linked list is circular"<<endl;
+    }else {
+        cout<<"Linked list is not circular"<<endl;
+    }
 }
