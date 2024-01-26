@@ -73,6 +73,21 @@ bool isCircular(Node *head) {
     }
     return true;
 }
+Node* floydDetectLoop(Node *head) {
+    if(head == NULL) {
+        return NULL;
+    }
+    Node *slow = head;
+    Node *fast = head;
+    while(fast!=NULL && fast->next!=NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast) {
+            return slow;
+        }
+    }
+    return NULL;
+}
 int main() {
     Node *tail = NULL;
     insertNode(tail, 2, 17);
@@ -84,7 +99,7 @@ int main() {
     print(tail);
     //deleteNode(tail, 2);
     //print(tail);
-    deleteNode(tail, 17);
+    //deleteNode(tail, 17);
     print(tail);
     //deleteNode(tail, 19);
     //print(tail);
@@ -95,5 +110,11 @@ int main() {
         cout<<"Linked list is circular"<<endl;
     }else {
         cout<<"Linked list is not circular"<<endl;
+    }
+    if(floydDetectLoop(tail)!=NULL) {
+        cout<<"Loop is present"<<endl;
+    }
+    else{
+        cout<<"Not present"<<endl;
     }
 }

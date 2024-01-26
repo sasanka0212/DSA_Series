@@ -73,6 +73,49 @@ void print(Node *&head) {
     }
     cout<<endl;
 }
+Node* floydDetectLoop(Node *head) {
+    if(head == NULL) {
+        return NULL;
+    }
+    Node *slow = head;
+    Node *fast = head;
+    while(fast!=NULL && fast->next!=NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast) {
+            return slow;
+        }
+    }
+    return NULL;
+}
+Node* getStartLoop(Node *head) {
+    if(head == NULL) {
+        return NULL;
+    }
+    Node *startLoop = floydDetectLoop(head);
+    if(startLoop == NULL) 
+        return NULL;
+    Node *slow = head;
+    while(slow!=startLoop) {
+        slow = slow->next;
+        startLoop = startLoop->next;
+    }
+    return slow;
+}
+Node* removeLoop(Node *head) {
+    if(head == NULL) {
+        return NULL;
+    }
+    Node *start = getStartLoop(head);
+    if(start == NULL) 
+        return head;
+    Node *temp = start;
+    while(temp->next!=start) {
+        temp = temp->next;
+    }
+    temp->next = NULL;
+    return head;
+}
 int main() {
     Node *node1 = new Node(5);
     Node *head = node1;
@@ -97,7 +140,16 @@ int main() {
     cout<<head->data<<" "<<tail->data<<endl;
     deleteNode(head, tail, 5);
     print(head);
-    cout<<head->data<<" "<<tail->data<<endl;
+    //creating a loop
+    tail->next = head->next;
+    if(floydDetectLoop(head)!=NULL) {
+        cout<<"Loop is present" <<endl;
+    }else {
+        cout<<"No loop" <<endl;
+    }
+    head = removeLoop(head);
+    print(head);
+    //cout<<head->data<<" "<<tail->data<<endl;
     /*
     deleteNode(head, tail, 1);
     print(head);
