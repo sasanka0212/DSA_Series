@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 
+// k queue in a single array
 class KQueue {
     int n;
     int k;
