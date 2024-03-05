@@ -29,19 +29,19 @@ node* insertNode(node *root) {
     return root;
 }
 
-void inorder(vector<node*> &v, node *root) {
+void inorder(node *root, int &count) {
     if(root == NULL)
         return;
-    inorder(v, root->left);
+    inorder(root->left, count);
     if(root->left == NULL && root->right == NULL)
-        v.push_back(root);
-    inorder(v, root->right);
+        count++;
+    inorder(root->right, count);
 }
 
-vector<node*> noOfLeafNodes(node *root) {
-    vector<node*> v;
-    inorder(v, root);
-    return v;
+int noOfLeafNodes(node *root) {
+    int count = 0;
+    inorder(root, count);
+    return count;
 }
 
 int main() {
@@ -49,7 +49,5 @@ int main() {
     root = insertNode(root);
 
     vector<node*> v;
-    v = noOfLeafNodes(root);
-    for(node *i : v) 
-        cout << i->data << " ";
+    cout << "No of leaf nodes : " << noOfLeafNodes(root);
 }
