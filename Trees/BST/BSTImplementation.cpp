@@ -40,6 +40,55 @@ void createBST(Node *&root) {
     }
 }
 
+Node* inorderPredecessor(Node *root) {
+    if(root->right == NULL) {
+        return root;
+    }
+    return inorderPredecessor(root->right);
+}
+
+Node* deletefromBST(Node *root, int val) {
+    //base case
+    if(root == NULL)
+        return root;
+    
+    //base case 2
+    if(root->data == val) {
+        //0 child
+        if(root->left == NULL && root->right == NULL) {
+            delete root;
+            return NULL;
+        }
+        //1 child
+        //only left child exists
+        if(root->left && root->right == NULL) {
+            Node *temp = root->left;
+            delete root;
+            return temp;
+        }
+        //only right child exists
+        if(root->left == NULL && root->right) {
+            Node *temp = root->right;
+            delete root;
+            return temp;
+        }
+        //2 child exists
+        if(root->left && root->right) {
+            int maxVal = inorderPredecessor(root->left)->data;
+            root->data = maxVal;
+            root->left = deletefromBST(root->left, maxVal);
+            return root;
+        }
+    }
+    if(val > root->data) {
+        root->right = deletefromBST(root->right, val);
+        return root;
+    } else {
+        root->left = deletefromBST(root->left, val);
+        return root;
+    }
+}
+
 void levelOrderTraversal(Node *&root) {
     queue<Node*> q;
     q.push(root);
@@ -82,4 +131,9 @@ int main() {
 
     cout << endl << "Inorder traversal " << endl;
     inorder(root);
+
+    root = deletefromBST(root, 15);
+
+    cout << endl << "Level order traversal " << endl;
+    levelOrderTraversal(root);
 }
