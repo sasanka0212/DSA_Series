@@ -51,7 +51,6 @@ void morrisTraversal(node *&root) {
             }
             //break when precessor is find out successfully
             if(predecessor->right) {
-                predecessor->right = NULL;
                 cout << currentNode->data << " ";
                 currentNode = currentNode->right;
             } else {
