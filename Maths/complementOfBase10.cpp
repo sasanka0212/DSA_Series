@@ -6,8 +6,7 @@ int complementOf(int n) {
     int r = 0;
     int space = 0;
     while(n) {
-        int rem = !(n & 1);
-        if(rem)
+        if(!(n & 1))
             r = r + (int)pow(2, space);
         space+=1;
         n = n>>1;
