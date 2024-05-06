@@ -2,12 +2,8 @@
 using namespace std;
 
 void swapAlternatve(int arr[], int size) {
-    int first = 0;
-    int second = 1;
-    while(second < size) {
-        swap(arr[first], arr[second]);
-        first+=2;
-        second+=2;
+    for(int i = 0; i+1<size; i+=2) {
+        swap(arr[i], arr[i+1]);
     }
 }
 
