@@ -40,7 +40,7 @@ pair<int, int> findFirstAndLastIndex(vector<int> &arr, int key) {
 int main() {
     vector<int> arr = {1, 1, 3, 3, 3, 7, 9, 10};
 
-    pair<int, int> ansIndex = findFirstAndLastIndex(arr, 3);
+    pair<int, int> ansIndex = findFirstAndLastIndex(arr, 1);
     cout << endl << "First Index :" << ansIndex.first << endl;
     cout << endl << "Last Index :" << ansIndex.second << endl;
 }
