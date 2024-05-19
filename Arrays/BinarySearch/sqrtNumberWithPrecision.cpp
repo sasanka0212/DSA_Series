@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace std;
 
-int sqrtNum(int n)
+long long int sqrtNum(int n)
 {
     int start = 0, end = n;
     int mid = start + (end - start) / 2;
-    int ans = -1;
-    while (start < end)
+    long long int ans = -1;
+    while (start <= end)
     {
         long long int square = mid * mid;
         if (square == n)
@@ -50,7 +50,7 @@ int main()
     int intergerPart = sqrtNum(n);
     cout << "Square root of " << n << " is : " << intergerPart << endl;
     double ans = precision(n, 5, intergerPart);
-    cout << "Actual square root is : " << ans;
+    cout << "Square root with precision is : " << ans;
 
     return 0;
 }
