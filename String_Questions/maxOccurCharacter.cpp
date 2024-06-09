@@ -13,7 +13,7 @@ char mostOccurChar(string s){
         }else{
             n = s[i] - 'A';
         }
-        count[n] = count[n] + 1;
+        count[n]++;
     }
     int max = -1, index = 0;
     for(int i = 0; i<count.size(); i++){
