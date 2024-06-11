@@ -11,7 +11,7 @@ public:
         for(int i = 1; i<s.length(); i++){
             temp.push_back(s[i]);
             if(j>0 && temp[j]==temp[j-1]){
-                temp.erase(j-1, 2);
+                temp.erase(j-1, 2);   
                 j--;
             }else{
                 j++;

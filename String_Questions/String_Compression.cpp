@@ -6,29 +6,33 @@ class Solution {
 public:
     int compress(vector<char>& chars) {
         int i = 0;
-        int lengthCount = 0;
-        int size = chars.size();
-        while(i<size){
+        int ansIndex = 0;
+        int n = chars.size();
+
+        while(i<n) {
             int j = i + 1;
-            while(j<size && chars[i]==chars[j]){
+            while(j<n && chars[i] == chars[j]) 
                 j++;
-            }
+
+            //store character first
+            chars[ansIndex++] = chars[i];
+
+            //calculate count and store
             int count = j - i;
-            chars[lengthCount++] = chars[i];
-            if(count>1){
-                string c = to_string(count);
-                for(char ch : c){
-                    chars[lengthCount++] = ch;
-                }
+            if(count > 1) {
+                string cnt = to_string(count);
+                for(char ch : cnt)
+                    chars[ansIndex++] = ch;
             }
+            //index of new character
             i = j;
         }
-        return lengthCount;
+        return ansIndex;
     }
 };
 
 int main(){
-    vector<char> chars = {'a', 'a', 'a', 'b', 'c', 'c', 'd', 'd', 'd'};
+    vector<char> chars = {'a', 'a', 'a', 'b', 'c', 'c', 'd', 'd'};
     Solution s;
     cout<<"Actual char array : "<<endl;
     for(char ch : chars){
