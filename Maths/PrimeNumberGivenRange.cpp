@@ -3,7 +3,7 @@
 #include<vector>
 using namespace std;
 
-// Time complexity -> o(n)
+// Time complexity -> o(n * log(logn))
 // space complexity -> o(n)
 int primeCount(int num) {
     int count = 0;
