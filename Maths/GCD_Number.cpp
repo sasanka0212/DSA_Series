@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 
+//lcm(a,b) * gcd(a,b) = a * b
 int gcd(int a, int b) {
     if(a==0)
         return b;
