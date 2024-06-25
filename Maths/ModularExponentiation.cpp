@@ -7,9 +7,9 @@ int moduleExponentiation(int a, int b, int m) {
     while(b > 0) {
         if(b & 1) //for odd case
         {
-            res = (res * (x % m)) % m;
+            res = (1LL * res * (x % m)) % m;
         }
-        x = (x % m) * (x % m) % m;
+        x = (1LL * (x % m) * (x % m)) % m;
         b = b>>1;
     }
     return res;
