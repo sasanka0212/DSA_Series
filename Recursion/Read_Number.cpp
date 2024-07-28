@@ -2,7 +2,7 @@
 using namespace std;
 #include<vector>
 
-void readNumber(int n, vector<string> a) {
+void readNumber(int n, vector<string> &a) {
     if(n == 0)  //base case
         return;
     int digit = n%10;
