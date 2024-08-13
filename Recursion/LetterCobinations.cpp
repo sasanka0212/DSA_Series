@@ -19,6 +19,8 @@ void solve(string digits, int index, string output, vector<string> &ans, string 
 
 vector<string> letterCombinations(string digits) {
     vector<string> ans;
+    if(digits.length() == 0) 
+        return ans;
     string output = "";
     string nums[10] = {"", "", "abc", "def", "ghi", "jkl", "mno", 
                     "pqrs", "tuv", "wxyz"};
@@ -27,7 +29,7 @@ vector<string> letterCombinations(string digits) {
 }
 
 int main() {
-    string digits = "34";
+    string digits = "3524";
     vector<string> ans = letterCombinations(digits);
     for(string s : ans) {
         cout<<s<<endl;
