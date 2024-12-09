@@ -2,25 +2,26 @@
 #include<stack>
 using namespace std;
 
-void sortedInsert(stack<int> &stack, int data) {
-	if(stack.empty() || stack.top() <= data) {
-		stack.push(data);
+void sortedInsert(stack<int> &s, int x) {
+	if(s.empty() || x > s.top()) {
+		s.push(x);
 		return;
 	}
-	int top = stack.top();
-	stack.pop();
-	sortedInsert(stack, data);
-	stack.push(top);
+	int n = s.top();
+	s.pop();
+	sortedInsert(s, x);
+	s.push(n);
 } 
-void sortStack(stack<int> &stack)
-{
-	if(stack.empty()) {
+
+void sortStack(stack<int> &s) {
+	if(s.empty()) 
 		return;
-	}
-	int top = stack.top();
-	stack.pop();
-	sortStack(stack);
-	sortedInsert(stack, top);
+	
+	//save top element
+	int n = s.top();
+	s.pop();
+	sortStack(s);
+	sortedInsert(s, n);
 }
 
 void display(stack<int> s) {

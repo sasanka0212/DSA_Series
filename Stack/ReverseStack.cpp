@@ -2,24 +2,25 @@
 #include<stack>
 using namespace std;
 
-void insertAtBottom(stack<int> &stack, int x) {
-    if(stack.empty()) {
-        stack.push(x);
+void insertBottom(stack<int> &s, int element) {
+    if(s.empty()) {
+        s.push(element);
         return;
     }
-    int n = stack.top();
-    stack.pop();
-    insertAtBottom(stack, x);
-    stack.push(n);
+    int num = s.top();
+    s.pop();
+    insertBottom(s, element);
+    s.push(num);
 }
-void reverseStack(stack<int> &stack) {
-    if(stack.empty()) {
+
+void reverseStack(stack<int> &s) {
+    if(s.empty()) {
         return;
     }
-    int n = stack.top();
-    stack.pop();
-    reverseStack(stack);
-    insertAtBottom(stack, n);
+    int num = s.top();
+    s.pop();
+    reverseStack(s);
+    insertBottom(s, num);
 }
 
 void display(stack<int> s) {

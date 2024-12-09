@@ -14,6 +14,7 @@ class Node {
         cout<<"Deleted data : "<<data<<endl;
     }
 };
+
 void insertHead(Node *&head, Node *&tail, int data) {
     Node *node = new Node(data);
     if(head == NULL) {
@@ -24,6 +25,7 @@ void insertHead(Node *&head, Node *&tail, int data) {
     head->prev = node;
     head = node;
 }
+
 void insertTail(Node *&head, Node *&tail, int data) {
     Node *node = new Node(data);
     if(tail == NULL) {
