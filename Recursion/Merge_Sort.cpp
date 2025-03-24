@@ -68,7 +68,7 @@ void mergeSort(int *arr, int s, int e) {
 
 int main() {
     int arr[] = {11, 6, 23, 3, 45};
-
+    
     mergeSort(arr, 0, 4);
     for(int i : arr) {
         cout<<i<<" ";
